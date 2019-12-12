@@ -44,19 +44,28 @@ end
 
 
 # ! refactor this ugly thing
+# def titleize(word)
+#     tempArray = word.split()
+#     newArray = []
+#     newString = ""
+#     newestString = ""
+#     # upArray = tempArray.map { |string| string.upcase() }
+#     tempArray.each do |string|
+#         if ["and", "the", "or", "over"].include?(string)
+#             newArray << string
+#         else
+#             newArray << string[0].upcase + string[1..-1]
+#         end
+#     end
+#     newString = newArray.join(" ")
+#     newestString = newString[0].upcase + newString[1..-1]
+# end
+
+
+# * better...
 def titleize(word)
-    tempArray = word.split()
-    newArray = []
-    newString = ""
-    newestString = ""
-    # upArray = tempArray.map { |string| string.upcase() }
-    tempArray.each do |string|
-        if ["and", "the", "or", "over"].include?(string)
-            newArray << string
-        else
-            newArray << string[0].upcase + string[1..-1]
-        end
-    end
-    newString = newArray.join(" ")
-    newestString = newString[0].upcase + newString[1..-1]
+    new = word.split
+    new[0].capitalize!
+    new.each { |x| ["and", "the", "or", "over"].include?(x) ? x: x.capitalize! }
+    new.join(" ")
 end
